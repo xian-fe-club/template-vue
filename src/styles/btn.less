@@ -1,0 +1,38 @@
+@import './variables.less';
+
+.colorBtn(@color) {
+  background: @color !important;
+  border-color: @color !important;
+  &:hover {
+    color: #fff;
+    background: lighten(@color, 6.5%);
+  }
+}
+
+.btn--blue {
+  .colorBtn(@blue);
+}
+
+.btn--light {
+  .colorBtn(@light-blue);
+}
+
+.btn--red {
+  .colorBtn(@red);
+}
+
+.btn--pink {
+  .colorBtn(@pink);
+}
+
+.btn--green {
+  .colorBtn(@green);
+}
+
+.btn--tiffany {
+  .colorBtn(@tiffany);
+}
+
+.btn--yellow {
+  .colorBtn(@yellow);
+}

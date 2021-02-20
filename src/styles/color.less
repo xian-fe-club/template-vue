@@ -1,0 +1,37 @@
+@import './variables.less';
+
+.color(@color) {
+  color: @color !important;
+
+  &:hover {
+    color: lighten(@color, 20%) !important;
+  }
+}
+
+.blue {
+  .color(@blue);
+}
+
+.light-blue {
+  .color(@light-blue);
+}
+
+.red {
+  .color(@red);
+}
+
+.pink {
+  .color(@pink);
+}
+
+.green {
+  .color(@green);
+}
+
+.tiffany {
+  .color(@tiffany);
+}
+
+.yellow {
+  .color(@yellow);
+}
