@@ -2,7 +2,7 @@
  * @Description: input自动获取焦点
  * @Author: liudehua
  * @Date: 2020-12-31 15:01:26
- * @LastEditTime: 2021-02-20 15:41:42
+ * @LastEditTime: 2021-02-20 16:22:05
  * @LastEditors: liudehua
  */
 
@@ -13,7 +13,7 @@ export default {
   //   console.log(el, row);
   // },
   // 绑定元素的父组件挂载时调用
-  mounted(el: Record<string, any>, row: Record<string, any>) {
+  mounted(el: Record<string, any>) {
     // 获取焦点的元素需要添加type类型
     const type = el.tagName.toLocaleLowerCase();
     if (type == "input" || type == "textarea") {
