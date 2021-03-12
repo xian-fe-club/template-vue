@@ -73,7 +73,6 @@ export default {
       router.replace({ name: row.key });
     };
     onBeforeRouteUpdate(to => {
-      console.log(to, ">>>>>");
       ininMent(menuList, to);
     });
     return {

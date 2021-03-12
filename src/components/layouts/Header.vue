@@ -17,13 +17,13 @@
     <div class="user">
       <a-dropdown>
         <a class="ant-dropdown-link" @click.prevent>
-          Hover me
+          {{ name }}
           <DownOutlined />
         </a>
         <template #overlay>
           <a-menu @click="handleUser">
-            <a-menu-item key="1">
-              1st menu item
+            <a-menu-item key="exit">
+              退出
             </a-menu-item>
           </a-menu>
         </template>
@@ -37,6 +37,7 @@ import { defineComponent, reactive, ref } from "vue";
 import Route from "@/utils/route";
 import { useRoute, useRouter } from "vue-router";
 import { DownOutlined } from "@ant-design/icons-vue";
+import store from "@/store";
 
 export default defineComponent({
   name: "Header",
@@ -45,6 +46,7 @@ export default defineComponent({
     const selectedKeys: any = ref("");
     const route = useRoute();
     const router = useRouter();
+    const name = ref(store.getters.name);
     // 获取导航菜单
     const routeList = reactive(Route.getMenuList());
     // 获取当前主导航菜单子菜单
@@ -63,11 +65,16 @@ export default defineComponent({
       }
     };
     handleMenu(menuData);
-    const handleUser = (row: string) => {
-      console.log(row);
+    const handleUser = (row: { key: string }) => {
+      if (row.key === "exit") {
+        store.dispatch("user/logout").then(() => {
+          router.push("/login");
+          location.reload();
+        });
+      }
     };
 
-    return { menuData, routeList, selectedKeys, handleMenu, handleUser };
+    return { name, menuData, routeList, selectedKeys, handleMenu, handleUser };
   }
 });
 </script>

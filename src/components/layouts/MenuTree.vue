@@ -5,11 +5,19 @@
       :key="menu.name"
     >
       <template #title>
-        <span>{{ menu.meta.title }}</span>
+        <div class="menu-title flex">
+          <img class="mr-5" v-if="menu.meta.icon" :src="menu.meta.icon" />
+          <span>{{ menu.meta.title }}</span>
+        </div>
       </template>
       <MenuTree v-for="item in menu.children" :key="item.name" :menu="item" />
     </a-sub-menu>
-    <a-menu-item v-else :key="menu.path">{{ menu.meta.title }}</a-menu-item>
+    <a-menu-item v-else :key="menu.path"
+      ><div class="menu-title flex">
+        <img class="mr-5" v-if="menu.meta.icon" :src="menu.meta.icon" />
+        <span>{{ menu.meta.title }}</span>
+      </div></a-menu-item
+    >
   </div>
 </template>
 
@@ -23,13 +31,15 @@ export default defineComponent({
       default: () => {
         return {
           meta: {
-            title: ""
+            title: "",
+            icon: ""
           },
           path: "",
           name: "",
           children: [
             {
-              path: ""
+              path: "",
+              name: ""
             }
           ]
         };
@@ -38,3 +48,15 @@ export default defineComponent({
   }
 });
 </script>
+<style lang="less" scoped>
+.mr-5 {
+  margin-right: 5px;
+}
+.menu-title {
+  align-items: center;
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+</style>

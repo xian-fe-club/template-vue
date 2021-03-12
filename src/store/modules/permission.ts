@@ -2,10 +2,11 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-02-07 15:49:43
- * @LastEditTime: 2021-02-19 15:33:29
+ * @LastEditTime: 2021-03-12 15:57:54
  * @LastEditors: liudehua
  */
 import { initRoute } from "@/router/util";
+import storage from "@/utils/storage";
 import permissionRoutes from "@/router/base.router";
 
 const state = {
@@ -22,7 +23,8 @@ const actions = {
   generateRoutes(content: any, roles: any) {
     return new Promise<void>(resolve => {
       let accessedRoutes;
-      if (roles.includes("admin")) {
+      const account = storage.get("ACCOUNT");
+      if (account === "admin") {
         accessedRoutes = initRoute(permissionRoutes);
       } else {
         accessedRoutes = initRoute(permissionRoutes, roles);

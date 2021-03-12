@@ -1,6 +1,7 @@
 import axios from "axios";
 import { message } from "ant-design-vue";
 import qs from "qs";
+import storage from "@/utils/storage";
 const config = require("./config");
 // 全局配置
 // 创建 axios 实例
@@ -43,7 +44,7 @@ service.interceptors.request.use(
     // 这里的config包含每次请求的内容
     config.headers["Content-Type"] = "application/json;charset=UTF-8";
     config.headers["Accept"] = "application/json";
-    const token = sessionStorage.getItem("loginToken") || null;
+    const token = storage.get("TOKEN") || null;
     if (token) {
       // 如果token不为null，否则传token给后台
       config.headers["Token"] = token;

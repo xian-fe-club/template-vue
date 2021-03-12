@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-01-27 14:15:38
- * @LastEditTime: 2021-02-19 14:05:04
+ * @LastEditTime: 2021-03-12 14:24:51
  * @LastEditors: liudehua
  */
 
@@ -19,7 +19,7 @@ export const init = (routeList: any, menuList?: any) => {
       routeItem.meta.title = route.routeName || routeItem.meta.title;
       routeItem.meta.icon = route.image || routeItem.meta.icon;
       if (routeItem.children && routeItem.children.length > 0) {
-        route.children = init(routeItem.children, menuList);
+        routeItem.children = init(routeItem.children, menuList);
       }
       menuArr.push(routeItem);
     }
@@ -33,12 +33,13 @@ export const newRoute = (routeList: any, parentRoute?: any) => {
     const route = routeItem;
     if (route && route.children && route.children.length > 0) {
       const childPath = route.children[0].path;
-      // 拼接重定向路由
+      // 配置子集路由前缀
+      const path = route.path.replace("/", "");
       route.parentPath = parentRoute
-        ? parentRoute.parentPath + "/" + childPath
-        : route.path.replace("/", "") + "/" + childPath;
+        ? parentRoute.parentPath + "/" + path
+        : path;
       // 配置重定向路由
-      route.redirect = `/app/${route.parentPath}`;
+      route.redirect = `/app/${route.parentPath + "/" + childPath}`;
       route.children = newRoute(routeItem.children, route);
     }
     menuArr.push(route);
