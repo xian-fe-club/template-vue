@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-01-06 15:30:15
- * @LastEditTime: 2021-02-20 15:45:22
+ * @LastEditTime: 2021-03-16 16:49:11
  * @LastEditors: liudehua
  */
 
@@ -15,7 +15,7 @@ const user: any = {
     title: "用户管理",
     isMenu: true
   },
-  component: () => Template,
+  component: Template,
   children: [
     {
       path: "user1",
