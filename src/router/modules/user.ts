@@ -2,11 +2,9 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-01-06 15:30:15
- * @LastEditTime: 2021-03-16 16:49:11
+ * @LastEditTime: 2021-03-18 09:25:52
  * @LastEditors: liudehua
  */
-
-import Template from "@/components/layouts/Template.vue";
 
 const user: any = {
   path: "user",
@@ -15,7 +13,7 @@ const user: any = {
     title: "用户管理",
     isMenu: true
   },
-  component: Template,
+  component: () => import("@/components/layouts/Template.vue"),
   children: [
     {
       path: "user1",

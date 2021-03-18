@@ -2,14 +2,14 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-02-07 15:29:30
- * @LastEditTime: 2021-03-12 10:24:07
+ * @LastEditTime: 2021-03-18 15:51:59
  * @LastEditors: liudehua
  */
 import router from "./router";
 import storage from "./utils/storage";
 import store from "./store";
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to: any, _: any, next: any) => {
   if (to.path === "/") {
     return next("/login");
   }
@@ -25,20 +25,13 @@ router.beforeEach(async (to, from, next) => {
       } else {
         try {
           await store.dispatch("user/genUserInfo");
-          await store.dispatch(
-            "permission/generateRoutes",
-            store.getters.roles
-          );
+          await store.dispatch("permission/generateRoutes", store.getters.roles);
           router.addRoute(store.getters.routes);
           // 获取记录路由是否存在当前登录用户的路由权限中
           const route = router.getRoutes().find(item => {
             return item.path == to.path;
           });
-          if (route) {
-            next(to.path);
-          } else {
-            next("/app");
-          }
+          route ? next(to.path) : next("/app");
         } catch (error) {
           next(`/login?redirect=${to.path}`);
         }
@@ -52,7 +45,3 @@ router.beforeEach(async (to, from, next) => {
     }
   }
 });
-
-export function resetRouter() {
-  // router.removeRoute();
-}

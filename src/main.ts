@@ -50,6 +50,8 @@ import {
   TreeSelect
 } from "ant-design-vue";
 import Focus from "./directive/focus";
+import Permission from "./directive/permission";
+import Pagination from "./components/Pagination.vue";
 
 import "./styles/base.less";
 import "./permission";
@@ -58,7 +60,10 @@ const app = createApp(App);
 
 app.config.globalProperties.$filters = Filters;
 app.directive("focus", Focus);
+app.directive("permission", Permission);
+
 app
+  .component("Pagination", Pagination)
   .use(ConfigProvider)
   .use(Layout)
   .use(Input)

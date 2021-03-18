@@ -4,12 +4,7 @@
       <a-form>
         <div class="login-title">登录</div>
         <div class="login-line">
-          <a-input
-            placeholder="账号"
-            type="text"
-            size="large"
-            v-model:value="info.account"
-          >
+          <a-input placeholder="账号" type="text" size="large" v-model:value="info.account">
             <template #prefix><UserOutlined /></template>
           </a-input>
         </div>
@@ -73,8 +68,8 @@ export default defineComponent({
   .login-box {
     width: 360px;
     padding: 20px;
-    border-radius: 4px;
     background-color: #fff;
+    border-radius: 4px;
   }
 
   .login-title {

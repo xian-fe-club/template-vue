@@ -2,15 +2,14 @@
  * @Description: 重置
  * @Author: liudehua
  * @Date: 2021-02-03 14:46:11
- * @LastEditTime: 2021-02-18 16:20:05
+ * @LastEditTime: 2021-03-18 16:37:35
  * @LastEditors: liudehua
  */
 
 body {
-  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial,
-  sans-serif;
   height: 100%;
-
+  font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial,
+    sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -19,7 +18,6 @@ body {
 html,
 body,
 button,
-p,
 span,
 applet,
 object,
@@ -30,7 +28,6 @@ h3,
 h4,
 h5,
 h6,
-p,
 blockquote,
 pre,
 a,
@@ -80,13 +77,13 @@ tr,
 th,
 td,
 p {
-  font-size: 100%;
   margin: 0;
   padding: 0;
+  font-size: 100%;
   vertical-align: baseline;
+  background: transparent;
   border: 0;
   outline: 0;
-  background: transparent;
 }
 
 i {
@@ -100,10 +97,9 @@ li {
 }
 
 html {
-  line-height: 1.15;
   box-sizing: border-box;
   height: 100%;
-
+  line-height: 1.15;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -112,19 +108,19 @@ html {
 }
 
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
-/*滚动条*/
+/* 滚动条 */
 ::-webkit-scrollbar {
   width: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, .1);
 }
 
 ::-webkit-scrollbar-track {
@@ -134,51 +130,37 @@ html {
 body,
 input,
 select,
-checkbox,
-radio,
+input[type="checkbox"],
+input[type="radio"],
 textarea,
 keygen,
 button {
-  font-family: 'PingHei', 'Helvetica Neue', 'Helvetica', 'STHeitiSC-Light', 'Arial',
-  'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
-
+  font-family: "PingHei", "Helvetica Neue", "Helvetica", "STHeitiSC-Light", "Arial",
+    "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
   -webkit-overflow-scrolling: touch;
 }
 
 button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
   padding: 0;
   border-style: none;
 }
 
 button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring {
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
-[type='checkbox'],
-[type='radio'] {
-  box-sizing: border-box; /* 1 */
-  padding: 0; /* 2 */
-}
-
-a:focus,
-a:active {
-  outline: none;
-}
-
-a,
-a:focus,
+a:link,
+a:visited,
+a:active,
 a:hover {
-  cursor: pointer;
-  text-decoration: none;
   color: inherit;
-}
-
-div:focus {
+  font-size: 12px;
+  text-decoration: none;
   outline: none;
 }
