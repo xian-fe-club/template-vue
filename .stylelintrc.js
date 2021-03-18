@@ -1,30 +1,30 @@
-{
-  "exclude": [".git/**", "node_modules/**", "bower_components/**"],
-  "always-semicolon": true,
-  "block-indent": "  ",
-  "color-case": "lower",
-  "color-shorthand": true,
-  "element-case": "lower",
-  "eof-newline": true,
-  "leading-zero": false,
-  "lines-between-rulesets": 1,
-  "quotes": "single",
-  "remove-empty-rulesets": true,
-  "space-after-colon": " ",
-  "space-after-combinator": " ",
-  "space-after-opening-brace": "\n",
-  "space-after-selector-delimiter": "\n",
-  "space-before-closing-brace": "\n",
-  "space-before-colon": "",
-  "space-before-combinator": " ",
-  "space-before-opening-brace": " ",
-  "space-before-selector-delimiter": "",
-  "space-between-declarations": "\n",
-  "strip-spaces": true,
-  "unitless-zero": true,
-  "vendor-prefix-align": true,
-  "sort-order": [
-    [
+module.exports = {
+  root: true,
+  plugins: ["stylelint-order"],
+  extends: [
+    "stylelint-config-standard",
+    "stylelint-config-rational-order",
+    "stylelint-config-prettier"
+  ],
+  rules: {
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        except: ["blockless-after-same-name-blockless", "first-nested"],
+        ignore: ["after-comment"]
+      }
+    ],
+    "at-rule-name-case": "lower",
+    "block-no-empty": true,
+    "selector-type-no-unknown": [
+      true,
+      {
+        // 对于未知标签添加
+        ignoreTypes: []
+      }
+    ],
+    // 覆盖stylelint-config-standard的配置
+    "order/properties-order": [
       "font",
       "font-family",
       "font-size",
@@ -354,6 +354,6 @@
       "filter:progid:DXImageTransform.Microsoft.gradient",
       "-ms-filter:\\'progid:DXImageTransform.Microsoft.gradient",
       "text-shadow"
-    ]
-  ]
-}
+    ] // 设置css属性书写顺序，会覆盖stylelint-config-rational-order
+  }
+};
