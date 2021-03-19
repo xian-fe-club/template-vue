@@ -4,12 +4,9 @@
       <div class="logo"></div>
       <div class="header-menu">
         <a-menu v-model:selectedKeys="selectedKeys" mode="horizontal">
-          <a-menu-item
-            v-for="menu in routeList"
-            :key="menu.name"
-            @click="handleMenu(menu, 1)"
-            >{{ menu.meta.title }}</a-menu-item
-          >
+          <a-menu-item v-for="menu in routeList" :key="menu.name" @click="handleMenu(menu, 1)">{{
+            menu.meta.title
+          }}</a-menu-item>
         </a-menu>
       </div>
     </div>

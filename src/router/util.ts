@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-01-27 14:15:38
- * @LastEditTime: 2021-03-12 14:24:51
+ * @LastEditTime: 2021-03-19 09:53:49
  * @LastEditors: liudehua
  */
 
@@ -35,9 +35,7 @@ export const newRoute = (routeList: any, parentRoute?: any) => {
       const childPath = route.children[0].path;
       // 配置子集路由前缀
       const path = route.path.replace("/", "");
-      route.parentPath = parentRoute
-        ? parentRoute.parentPath + "/" + path
-        : path;
+      route.parentPath = parentRoute ? parentRoute.parentPath + "/" + path : path;
       // 配置重定向路由
       route.redirect = `/app/${route.parentPath + "/" + childPath}`;
       route.children = newRoute(routeItem.children, route);

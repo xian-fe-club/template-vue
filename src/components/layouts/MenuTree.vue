@@ -1,9 +1,6 @@
 <template>
   <div class="menutree">
-    <a-sub-menu
-      v-if="menu.children && menu.children.length >= 1"
-      :key="menu.name"
-    >
+    <a-sub-menu v-if="menu.children && menu.children.length >= 1" :key="menu.name">
       <template #title>
         <div class="menu-title flex">
           <img class="mr-5" v-if="menu.meta.icon" :src="menu.meta.icon" />

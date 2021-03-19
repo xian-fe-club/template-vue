@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-01-04 15:59:03
- * @LastEditTime: 2021-03-12 16:07:00
+ * @LastEditTime: 2021-03-19 09:53:30
  * @LastEditors: liudehua
  */
 
@@ -25,10 +25,7 @@ const mutations = {
   SET_AVATAR: (state: Record<string, any>, avatar: string) => {
     state.avatar = avatar;
   },
-  SET_ROLES: (
-    state: Record<string, any>,
-    roles: Array<Record<string, any>>
-  ) => {
+  SET_ROLES: (state: Record<string, any>, roles: Array<Record<string, any>>) => {
     state.roles = roles;
   }
 };

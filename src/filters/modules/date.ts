@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-01-04 11:06:26
- * @LastEditTime: 2021-02-03 15:09:22
+ * @LastEditTime: 2021-03-19 09:53:57
  * @LastEditors: liudehua
  */
 //时间戳转换为自己想要的格式
@@ -23,18 +23,13 @@ Date.prototype._format = function(format: string): string {
     "S+": this.getMilliseconds()
   };
   if (/(y+)/i.test(format)) {
-    format = format.replace(
-      RegExp.$1,
-      (this.getFullYear() + "").substr(4 - RegExp.$1.length)
-    );
+    format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
   }
   for (const k in date) {
     if (new RegExp("(" + k + ")").test(format)) {
       format = format.replace(
         RegExp.$1,
-        RegExp.$1.length == 1
-          ? date[k]
-          : ("00" + date[k]).substr(("" + date[k]).length)
+        RegExp.$1.length == 1 ? date[k] : ("00" + date[k]).substr(("" + date[k]).length)
       );
     }
   }
