@@ -1,0 +1,86 @@
+{
+  "fileheader.cursorMode": {
+    "author": "liudehua",
+    "description": "",
+    "param": "",
+    "return": "",
+    "version": ""
+  },
+  "fileheader.customMade": {
+    "Description": "", //文件内容描述
+    "Author": "", //编辑人
+    "Date": "Do not edit", //时间
+    "LastEditTime": "Do not edit",
+    "LastEditors": ""
+  },
+  "prettier.useTabs": true,
+  "prettier.tabWidth": 2,
+  "prettier.printWidth": 100,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "none",
+  "prettier.semi": true,
+  "prettier.requireConfig": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.stylelintIntegration": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "svipas.prettier-plus"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "svipas.prettier-plus"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "svipas.prettier-plus"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "svipas.prettier-plus"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "svipas.prettier-plus"
+  },
+  "[sass]": {
+    "editor.defaultFormatter": "svipas.prettier-plus"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "svipas.prettier-plus"
+  },
+  "[less]": {
+    "editor.defaultFormatter": "svipas.prettier-plus"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "octref.vetur"
+  },
+  "path-intellisense.mappings": {
+    "@": "${workspaceRoot}/src"
+  },
+  "vetur.format.defaultFormatter.html": "prettier",
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  "vetur.format.options.tabSize": 2,
+  "vetur.format.options.useTabs": true, // 换行类型
+  "vetur.format.defaultFormatterOptions": {
+    "prettier": {
+      "semi": true,
+      "singleQuote": false,
+      "eslintIntegration": true,
+      "trailingComma": "none"
+    },
+    "js-beautify-html": {
+      "wrap_attributes": "auto",
+      "wrap_line_length": 100,
+      "end_with_newline": false,
+      "semi": true,
+      "singleQuote": false
+    }
+  },
+  "vetur.validation.templateProps": true,
+  "eslint.validate": [
+    "vue",
+    "html",
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact"
+  ]
+}
