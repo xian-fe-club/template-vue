@@ -28,8 +28,4 @@ const router = createRouter({
   routes
 });
 
-export const resetRouter = () => {
-  console.log(router);
-};
-
 export default router;
