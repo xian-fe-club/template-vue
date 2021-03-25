@@ -2,8 +2,8 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-02-07 15:29:30
- * @LastEditTime: 2021-03-18 15:51:59
- * @LastEditors: liudehua
+ * @LastEditTime: 2021-03-25 14:17:46
+ * @LastEditors: Please set LastEditors
  */
 import router from "./router";
 import storage from "./utils/storage";
@@ -29,7 +29,7 @@ router.beforeEach(async (to: any, _: any, next: any) => {
           router.addRoute(store.getters.routes);
           // 获取记录路由是否存在当前登录用户的路由权限中
           const route = router.getRoutes().find(item => {
-            return item.path == to.path;
+            return item.name == to.name;
           });
           route ? next(to.path) : next("/app");
         } catch (error) {
