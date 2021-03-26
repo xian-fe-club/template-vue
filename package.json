@@ -78,5 +78,6 @@
     "stylelint-order": "^4.1.0",
     "typescript": "~3.9.3",
     "vue-cli-plugin-style-resources-loader": "~0.1.4"
-  }
+  },
+  "frameType": "vue3"
 }

@@ -14,8 +14,8 @@
 
 <script lang="ts">
 import { reactive } from "vue";
-import MenuLeft from "./MenuLeft.vue";
-import Header from "./Header.vue";
+import MenuLeft from "@/components/layouts/MenuLeft/index.vue";
+import Header from "@/components/layouts/Header/index.vue";
 
 export default {
   components: { Header, MenuLeft },

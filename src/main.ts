@@ -1,3 +1,6 @@
+import Pagination from "./components/Pagination/index.vue";
+import Focus from "./directive/focus";
+import Permission from "./directive/permission";
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
@@ -49,9 +52,6 @@ import {
   Tree,
   TreeSelect
 } from "ant-design-vue";
-import Focus from "./directive/focus";
-import Permission from "./directive/permission";
-import Pagination from "./components/Pagination.vue";
 
 import "./styles/base.less";
 import "./permission";
@@ -63,7 +63,6 @@ app.directive("focus", Focus);
 app.directive("permission", Permission);
 
 app
-  .component("Pagination", Pagination)
   .use(ConfigProvider)
   .use(Layout)
   .use(Input)
@@ -110,4 +109,5 @@ app
   .use(TreeSelect)
   .use(router)
   .use(store)
+  .component("Pagination", Pagination)
   .mount("#app");

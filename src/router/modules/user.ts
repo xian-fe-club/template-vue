@@ -13,7 +13,7 @@ const user: any = {
     title: "用户管理",
     isMenu: true
   },
-  component: () => import("@/components/layouts/Template.vue"),
+  component: () => import("@/components/layouts/Template/index.vue"),
   children: [
     {
       path: "user1",

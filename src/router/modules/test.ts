@@ -2,8 +2,8 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-02-03 18:04:24
- * @LastEditTime: 2021-03-18 09:26:07
- * @LastEditors: liudehua
+ * @LastEditTime: 2021-03-26 10:11:35
+ * @LastEditors: Please set LastEditors
  */
 
 const test: any = {
@@ -14,7 +14,7 @@ const test: any = {
     icon: "",
     isMenu: true
   },
-  component: () => import("@/components/layouts/Template.vue"),
+  component: () => import("@/components/layouts/Template/index.vue"),
   children: [
     {
       path: "about",
@@ -25,7 +25,7 @@ const test: any = {
         isMenu: true,
         tag: "test"
       },
-      component: () => import("@/components/layouts/Template.vue"),
+      component: () => import("@/components/layouts/Template/index.vue"),
       children: [
         {
           path: "about1",

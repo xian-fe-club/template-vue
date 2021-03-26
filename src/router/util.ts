@@ -2,8 +2,8 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-01-27 14:15:38
- * @LastEditTime: 2021-03-19 09:53:49
- * @LastEditors: liudehua
+ * @LastEditTime: 2021-03-26 10:12:17
+ * @LastEditors: Please set LastEditors
  */
 
 export const init = (routeList: any, menuList?: any) => {
@@ -51,7 +51,7 @@ export const initRoute = (routeList: any, list?: any) => {
     path: "/app",
     name: "app",
     redirect: newRouteList.length ? newRouteList[0].redirect : "/401",
-    component: () => import("@/components/layouts/Layout.vue"),
+    component: () => import("@/components/layouts/Layout/index.vue"),
     children: newRouteList
   };
 };
