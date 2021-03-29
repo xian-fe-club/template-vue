@@ -1,0 +1,58 @@
+{
+  "path": "test",
+  "name": "Test",
+  "meta": {
+    "title": "测试",
+    "icon": "",
+    "isMenu": true
+  },
+  "component": "components/layouts/Template/index.vue",
+  "children": [
+    {
+      "path": "about",
+      "name": "About",
+      "meta": {
+        "title": "about",
+        "icon": "",
+        "isMenu": true,
+        "tag": "test"
+      },
+      "component": "components/layouts/Template/index.vue",
+      "children": [
+        {
+          "path": "about1",
+          "name": "About1",
+          "meta": {
+            "title": "about1",
+            "icon": "",
+            "isMenu": true,
+            "tag": "test"
+          },
+          "component": "pages/test/about/About1/index.vue"
+        },
+        {
+          "path": "about2",
+          "name": "About2",
+          "meta": {
+            "title": "about2",
+            "icon": "",
+            "isMenu": true,
+            "tag": "test"
+          },
+          "component": "pages/test/about/About2/index.vue"
+        },
+        {
+          "path": "about3",
+          "name": "About3",
+          "meta": {
+            "title": "about3",
+            "icon": "",
+            "isMenu": true,
+            "tag": "test"
+          },
+          "component": "pages/test/about/About3/index.vue"
+        }
+      ]
+    }
+  ]
+}

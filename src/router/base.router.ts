@@ -2,10 +2,11 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-01-27 14:40:59
- * @LastEditTime: 2021-01-29 14:53:37
- * @LastEditors: liudehua
+ * @LastEditTime: 2021-03-26 16:41:48
+ * @LastEditors: Please set LastEditors
  */
-import Test from "./modules/test";
-import User from "./modules/user";
-
-export default [Test, User];
+const modulesFiles = require.context("./modules", true, /\.json$/);
+const modules = modulesFiles.keys().map(modulePath => {
+  return modulesFiles(modulePath);
+}, {});
+export default modules;
