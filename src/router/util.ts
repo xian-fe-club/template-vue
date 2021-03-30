@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-01-27 14:15:38
- * @LastEditTime: 2021-03-26 16:58:58
+ * @LastEditTime: 2021-03-30 09:20:00
  * @LastEditors: Please set LastEditors
  */
 export const init = (routeList: any, menuList?: any) => {
@@ -29,7 +29,11 @@ export const init = (routeList: any, menuList?: any) => {
 export const newRoute = (routeList: any, parentRoute?: any) => {
   const menuArr: any = [];
   routeList.forEach((routeItem: any) => {
-    routeItem.component = import(`@/${routeItem.component}`);
+    if (routeItem.component === "template") {
+      routeItem.component = import("@/components/layouts/Template/index.vue");
+    } else {
+      routeItem.component = import(`@/${routeItem.component}`);
+    }
     const route = routeItem;
     if (route && route.children && route.children.length > 0) {
       const childPath = route.children[0].path;

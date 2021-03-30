@@ -5,7 +5,7 @@
     "title": "用户管理",
     "isMenu": true
   },
-  "component": "components/layouts/Template/index.vue",
+  "component": "template",
   "children": [
     {
       "path": "user1",

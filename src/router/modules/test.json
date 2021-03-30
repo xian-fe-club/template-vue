@@ -6,7 +6,7 @@
     "icon": "",
     "isMenu": true
   },
-  "component": "components/layouts/Template/index.vue",
+  "component": "template",
   "children": [
     {
       "path": "about",
@@ -17,7 +17,7 @@
         "isMenu": true,
         "tag": "test"
       },
-      "component": "components/layouts/Template/index.vue",
+      "component": "template",
       "children": [
         {
           "path": "about1",
