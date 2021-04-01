@@ -2,12 +2,9 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-02-07 15:49:43
- * @LastEditTime: 2021-03-12 15:57:54
- * @LastEditors: liudehua
+ * @LastEditTime: 2021-04-01 15:53:50
+ * @LastEditors: Please set LastEditors
  */
-import { initRoute } from "@/router/util";
-import storage from "@/utils/storage";
-import permissionRoutes from "@/router/base.router";
 
 const state = {
   routes: []
@@ -20,15 +17,9 @@ const mutations = {
 };
 
 const actions = {
-  generateRoutes(content: any, roles: any) {
+  generateRoutes(content: any) {
     return new Promise<void>(resolve => {
       let accessedRoutes;
-      const account = storage.get("ACCOUNT");
-      if (account === "admin") {
-        accessedRoutes = initRoute(permissionRoutes);
-      } else {
-        accessedRoutes = initRoute(permissionRoutes, roles);
-      }
       content.commit("SET_ROUTES", accessedRoutes);
       resolve();
     });

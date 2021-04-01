@@ -48,13 +48,11 @@ export default defineComponent({
       password: ""
     });
     const submit = () => {
-      // 默认admin账号为全权限,其余需要根据后台权限配置
-      info.account = "admin";
       login(info).then((res: any) => {
         storage.set("TOKEN", res.data.token);
         storage.set("ACCOUNT", info.account);
         store.commit("user/SET_TOKEN", res.data.token);
-        router.push("/app");
+        router.push("app");
       });
     };
     return { info, submit };
