@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-01-27 14:15:38
- * @LastEditTime: 2021-03-30 09:20:00
+ * @LastEditTime: 2021-03-30 13:40:36
  * @LastEditors: Please set LastEditors
  */
 export const init = (routeList: any, menuList?: any) => {

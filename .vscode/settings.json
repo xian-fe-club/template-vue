@@ -58,7 +58,7 @@
   "vetur.format.defaultFormatter.html": "prettier",
   "vetur.format.defaultFormatter.js": "vscode-typescript",
   "vetur.format.options.tabSize": 2,
-  "vetur.format.options.useTabs": true, // 换行类型
+  "vetur.format.options.useTabs": false, // 换行类型
   "vetur.format.defaultFormatterOptions": {
     "prettier": {
       "semi": true,
@@ -75,6 +75,9 @@
     }
   },
   "vetur.validation.templateProps": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
   "eslint.validate": [
     "vue",
     "html",

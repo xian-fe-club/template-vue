@@ -3,8 +3,7 @@
   "name": "Test",
   "meta": {
     "title": "测试",
-    "icon": "",
-    "isMenu": true
+    "icon": ""
   },
   "component": "template",
   "children": [

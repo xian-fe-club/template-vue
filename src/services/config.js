@@ -1,12 +1,6 @@
-const {
-  application: devBucket
-} = require("../../ciri_config/.ciri-upload.config.js");
-const {
-  application: debugBucket
-} = require("../../ciri_config/.ciri-upload.debug.config.js");
-const {
-  application: prodBucket
-} = require("../../ciri_config/.ciri-upload.prod.config.js");
+const { application: devBucket } = require("../../ciri_config/.ciri-upload.config.js");
+const { application: debugBucket } = require("../../ciri_config/.ciri-upload.debug.config.js");
+const { application: prodBucket } = require("../../ciri_config/.ciri-upload.prod.config.js");
 
 const production = {
   api: "",
