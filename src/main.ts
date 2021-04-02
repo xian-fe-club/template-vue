@@ -1,4 +1,5 @@
-import Pagination from "./components/Pagination/index.vue";
+import ComPagination from "./components/Pagination/index.vue";
+import ComBreadcrumb from "./components/Breadcrumb/index.vue";
 import Focus from "./directive/focus";
 import Permission from "./directive/permission";
 import { createApp } from "vue";
@@ -109,5 +110,6 @@ app
   .use(TreeSelect)
   .use(router)
   .use(store)
-  .component("Pagination", Pagination)
+  .component("Pagination", ComPagination)
+  .component("Breadcrumb", ComBreadcrumb)
   .mount("#app");

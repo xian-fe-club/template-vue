@@ -6,7 +6,10 @@
         <MenuLeft :menulist="leftMenu" />
       </a-layout-sider>
       <a-layout-content>
-        <router-view />
+        <div class="page-box">
+          <Breadcrumb></Breadcrumb>
+          <router-view />
+        </div>
       </a-layout-content>
     </a-layout>
   </a-layout>
