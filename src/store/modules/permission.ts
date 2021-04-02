@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-02-07 15:49:43
- * @LastEditTime: 2021-04-01 15:53:50
+ * @LastEditTime: 2021-04-02 09:00:10
  * @LastEditors: Please set LastEditors
  */
 
@@ -10,21 +10,9 @@ const state = {
   routes: []
 };
 
-const mutations = {
-  SET_ROUTES: (state: any, routes: any) => {
-    state.routes = routes;
-  }
-};
+const mutations = {};
 
-const actions = {
-  generateRoutes(content: any) {
-    return new Promise<void>(resolve => {
-      let accessedRoutes;
-      content.commit("SET_ROUTES", accessedRoutes);
-      resolve();
-    });
-  }
-};
+const actions = {};
 
 export default {
   namespaced: true,
