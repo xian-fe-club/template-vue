@@ -8,7 +8,7 @@
       <a-layout-content>
         <div class="page-box">
           <Breadcrumb></Breadcrumb>
-          <router-view />
+          <router-view :key="key" />
         </div>
       </a-layout-content>
     </a-layout>
@@ -16,20 +16,25 @@
 </template>
 
 <script lang="ts">
-import { reactive } from "vue";
+import { reactive, computed } from "vue";
 import MenuLeft from "@/components/layouts/MenuLeft/index.vue";
 import Header from "@/components/layouts/Header/index.vue";
+import { useRoute } from "vue-router";
 
 export default {
   components: { Header, MenuLeft },
   setup() {
     const leftMenu: any = reactive([]);
-    const changeMenu = function(menu: any) {
+    const changeMenu = function (menu: any) {
       leftMenu.splice.apply(leftMenu, [0, leftMenu.length, ...menu]);
     };
+
+    const route = useRoute();
+    const key = computed(() => (route.path !== void 0 ? `${route.path}${new Date()}` : new Date()));
     return {
       leftMenu,
-      changeMenu
+      changeMenu,
+      key
     };
   }
 };
