@@ -79,24 +79,27 @@ export default defineComponent({
 .header-box {
   height: 100%;
   color: #fff;
-}
 
-.logo {
-  width: 180px;
-  height: 40px;
-  background-image: url(https://biv.oss-cn-hangzhou.aliyuncs.com/common/logo.png);
-  background-size: cover;
-}
-
-.header-menu {
-  margin-left: 30px;
-
-  .ant-menu {
-    background: transparent;
+  .logo {
+    width: 180px;
+    height: 40px;
+    background-image: url(https://biv.oss-cn-hangzhou.aliyuncs.com/common/logo.png);
+    background-size: cover;
   }
 }
+</style>
+<style lang="less">
+.header-box {
+  .header-menu {
+    margin-left: 30px;
 
-.ant-menu-item {
-  color: #fff;
+    .ant-menu {
+      background: transparent;
+    }
+
+    .ant-menu-item {
+      color: #fff;
+    }
+  }
 }
 </style>
