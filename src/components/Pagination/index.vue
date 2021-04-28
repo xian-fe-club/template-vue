@@ -8,7 +8,7 @@
       show-quick-jumper
       show-size-changer
       :current="page"
-      :defaultPageSize="pageSize"
+      :pageSize="pageSize"
       :pageSizeOptions="sizeOptions"
       :total="total"
       @change="changePage"
