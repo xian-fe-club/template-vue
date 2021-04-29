@@ -5,7 +5,7 @@ module.exports = {
       2,
       "always",
 
-      ["upd", "feat", "fix", "refactor", "docs", "chore", "style", "revert"]
+      ["upd", "feat", "fix", "refactor", "docs", "chore", "style", "revert", "perf"]
     ],
     "type-case": [0],
     "type-empty": [0],
