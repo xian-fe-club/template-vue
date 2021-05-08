@@ -55,6 +55,7 @@ import {
 } from "ant-design-vue";
 
 import "./styles/base.less";
+import "./import.less";
 import "./permission";
 
 const app = createApp(App);
