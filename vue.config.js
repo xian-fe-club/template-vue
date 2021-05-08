@@ -28,7 +28,7 @@ module.exports = {
     config.resolve.extensions = [".ts", ".js", ".jsx", ".json", ".vue"];
     config.plugins.forEach(val => {
       if (val instanceof HtmlWebpackPlugin) {
-        val.options.title = "";
+        val.options.title = require("./package.json").name;
       }
     });
   },
