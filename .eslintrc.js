@@ -20,7 +20,8 @@ module.exports = {
     "prefer-const": "off",
     "no-unused-expressions": 0,
     "@typescript-eslint/no-var-requires": 0,
-    "no-unused-vars": 0
+    "no-unused-vars": 0,
+    "@typescript-eslint/interface-name-prefix": 0
   },
   overrides: [
     {
