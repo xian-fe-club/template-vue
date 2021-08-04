@@ -9,7 +9,7 @@
       </template>
       <MenuTree v-for="item in menu.children" :key="item.name" :menu="item" />
     </a-sub-menu>
-    <a-menu-item v-else :key="menu.path"
+    <a-menu-item v-else :key="menu.name"
       ><div class="menu-title flex">
         <img class="mr-5" v-if="menu.meta.icon" :src="menu.meta.icon" />
         <span>{{ menu.meta.title }}</span>
@@ -25,21 +25,9 @@ export default defineComponent({
   name: "MenuTree",
   props: {
     menu: {
+      type: Object,
       default: () => {
-        return {
-          meta: {
-            title: "",
-            icon: ""
-          },
-          path: "",
-          name: "",
-          children: [
-            {
-              path: "",
-              name: ""
-            }
-          ]
-        };
+        return {};
       }
     }
   }
@@ -49,8 +37,10 @@ export default defineComponent({
 .mr-5 {
   margin-right: 5px;
 }
+
 .menu-title {
   align-items: center;
+
   img {
     width: 20px;
     height: 20px;
