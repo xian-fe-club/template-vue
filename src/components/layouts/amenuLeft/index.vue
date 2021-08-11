@@ -18,7 +18,7 @@
 <script lang="ts">
 import { reactive, toRefs } from "vue";
 import { useRouter, useRoute, onBeforeRouteUpdate } from "vue-router";
-import MenuTree from "@/components/layouts/MenuTree/index.vue";
+import MenuTree from "@/components/layouts/menuTree/index.vue";
 
 export default {
   name: "MenuLeft",

@@ -17,8 +17,8 @@
 
 <script lang="ts">
 import { reactive, computed } from "vue";
-import MenuLeft from "@/components/layouts/MenuLeft/index.vue";
-import Header from "@/components/layouts/Header/index.vue";
+import MenuLeft from "@/components/layouts/menuLeft/index.vue";
+import Header from "@/components/layouts/header/index.vue";
 import { useRoute } from "vue-router";
 
 export default {

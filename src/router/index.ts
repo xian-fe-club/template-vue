@@ -25,7 +25,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/app",
     name: "app",
     redirect: "/app/test",
-    component: () => import("@/components/layouts/Layout/index.vue"),
+    component: () => import("@/components/layouts/layout/index.vue"),
     children: [
       {
         path: "test",
@@ -36,7 +36,7 @@ const routes: Array<RouteRecordRaw> = [
           isMenu: true
         },
         redirect: "/app/test/about",
-        component: () => import("@/components/layouts/Template/index.vue"),
+        component: () => import("@/components/layouts/template/index.vue"),
         children: [
           {
             path: "about",
@@ -48,7 +48,7 @@ const routes: Array<RouteRecordRaw> = [
               tag: "test"
             },
             redirect: "/app/test/about/about1",
-            component: () => import("@/components/layouts/Template/index.vue"),
+            component: () => import("@/components/layouts/template/index.vue"),
             children: [
               {
                 path: "about1",
@@ -59,7 +59,7 @@ const routes: Array<RouteRecordRaw> = [
                   isMenu: true,
                   tag: "test"
                 },
-                component: () => import("@/pages/test/about/About1/index.vue")
+                component: () => import("@/pages/test/about/about1/index.vue")
               },
               {
                 path: "about2",
@@ -70,7 +70,7 @@ const routes: Array<RouteRecordRaw> = [
                   isMenu: true,
                   tag: "test"
                 },
-                component: () => import("@/pages/test/about/About2/index.vue")
+                component: () => import("@/pages/test/about/about2/index.vue")
               },
               {
                 path: "about3",
@@ -81,7 +81,7 @@ const routes: Array<RouteRecordRaw> = [
                   isMenu: true,
                   tag: "test"
                 },
-                component: () => import("@/pages/test/about/About3/index.vue")
+                component: () => import("@/pages/test/about/about3/index.vue")
               }
             ]
           }
@@ -95,7 +95,7 @@ const routes: Array<RouteRecordRaw> = [
           isMenu: true
         },
         redirect: "/app/user/user1",
-        component: () => import("@/components/layouts/Template/index.vue"),
+        component: () => import("@/components/layouts/template/index.vue"),
         children: [
           {
             path: "user1",
@@ -105,7 +105,7 @@ const routes: Array<RouteRecordRaw> = [
               icon: "",
               isMenu: true
             },
-            component: () => import("@/pages/user/User1/index.vue")
+            component: () => import("@/pages/user/user1/index.vue")
           },
           {
             path: "user2",
@@ -115,7 +115,7 @@ const routes: Array<RouteRecordRaw> = [
               icon: "",
               isMenu: true
             },
-            component: () => import("@/pages/user/User2/index.vue")
+            component: () => import("@/pages/user/user2/index.vue")
           },
           {
             path: "user3",
@@ -125,7 +125,7 @@ const routes: Array<RouteRecordRaw> = [
               icon: "",
               isMenu: true
             },
-            component: () => import("@/pages/user/User3/index.vue")
+            component: () => import("@/pages/user/user3/index.vue")
           }
         ]
       }
