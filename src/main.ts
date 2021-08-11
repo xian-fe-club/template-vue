@@ -24,7 +24,6 @@ import {
   Modal,
   Table,
   Tabs,
-  Icon,
   Badge,
   Popover,
   Dropdown,
@@ -81,7 +80,6 @@ app
   .use(Modal)
   .use(Table)
   .use(Tabs)
-  .use(Icon)
   .use(Badge)
   .use(Popover)
   .use(Dropdown)
@@ -111,6 +109,6 @@ app
   .use(TreeSelect)
   .use(router)
   .use(store)
-  .component("pagination", ComPagination)
-  .component("breadcrumb", ComBreadcrumb)
+  .component("Pagination", ComPagination)
+  .component("Breadcrumb", ComBreadcrumb)
   .mount("#app");

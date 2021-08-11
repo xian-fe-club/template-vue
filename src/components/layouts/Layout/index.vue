@@ -8,7 +8,7 @@
       <a-layout-content>
         <div class="page-box">
           <Breadcrumb></Breadcrumb>
-          <router-view :key="key" />
+          <router-view />
         </div>
       </a-layout-content>
     </a-layout>
@@ -25,7 +25,7 @@ export default {
   components: { Header, MenuLeft },
   setup() {
     const leftMenu: any = reactive([]);
-    const changeMenu = function (menu: any) {
+    const changeMenu = function(menu: any) {
       leftMenu.splice.apply(leftMenu, [0, leftMenu.length, ...menu]);
     };
 
@@ -43,12 +43,15 @@ export default {
 .ant-layout-header {
   padding: 0 20px;
 }
+
 .layout {
   height: 100%;
+
   .header-box {
     height: 100%;
     color: #fff;
   }
+
   .logo {
     width: 180px;
     height: 40px;
