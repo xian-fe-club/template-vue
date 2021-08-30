@@ -2,6 +2,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const config = require("./src/services/config");
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
 const flag = process.argv.find(item => {
   return item === "build";
 });
@@ -16,6 +17,7 @@ module.exports = {
   productionSourceMap: process.env.NODE_ENV === "production" ? false : true,
   chainWebpack: config => {
     config.resolve.alias.set("@", path.resolve("src"));
+    config.plugin("run-cache").use(HardSourceWebpackPlugin);
   },
   pluginOptions: {
     // 配置less 全局变量
