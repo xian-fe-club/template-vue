@@ -39,30 +39,23 @@ export default {
     const route = useRoute();
     // 获取导航菜单
     const menuList = reactive(props.menulist);
-    const deepKeys = (path: string, item: any, keys: Array<string>) => {
-      if (item && item.children && item.children.length) {
-        item.children.forEach((row: any) => {
-          deepKeys(path, row, keys);
-        });
-      } else {
-        if (path.includes(item.path)) {
-          keys.push(item.name);
-        }
-      }
-    };
+    console.log(menuList);
+
     // 初始化菜单选中
     const ininMent = (menuList: any, to?: any) => {
       const list: any = [];
       const keys: any = [];
-      let path = route.path;
+      // 默认选中的菜单name等于当前路由的name
+      // 如果存在多级菜单如页面详情页menuName等于需要选中的菜单name即可
       if (to) {
-        path = to.path;
+        keys.push(to.meta.menuName ? to.meta.menuName : to.name);
+      } else {
+        keys.push(route.meta.menuName ? route.meta.menuName : route.name);
       }
       if (menuList.length) {
         menuList.forEach((item: any) => {
           // 配置打开的菜单项
           list.push(item.name);
-          deepKeys(path, item, keys);
         });
       }
       data.openKeys = list;
