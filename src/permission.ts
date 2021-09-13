@@ -6,11 +6,15 @@
  * @LastEditors: Please set LastEditors
  */
 import router from "./router";
+import NProgress from 'nprogress'
 
 router.beforeEach((to: any, _: any, next: any) => {
+  NProgress.start()
   if (to.path === "/") {
+    NProgress.done()
     return next("/login");
   }
   if (to.meta.title) document.title = to.meta.title;
   next();
+  NProgress.done()
 });

@@ -48,10 +48,11 @@ export default defineComponent({
       password: ""
     });
     const submit = () => {
-      login(info).then((res: any) => {
+      login(info).then(async (res: any) => {
         storage.set("TOKEN", res.data.token);
         storage.set("ACCOUNT", info.account);
         store.commit("user/SET_TOKEN", res.data.token);
+        await store.dispatch("user/genUserInfo", info)
         router.push("app");
       });
     };

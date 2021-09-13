@@ -7,7 +7,10 @@
  */
 
 import { getUserInfo } from "@/api/user";
+import { getRoutersByName, resetRouterByName } from "@/router";
 import Storage from "@/utils/storage";
+
+const rolesToRouters = new WeakMap()
 
 const state = {
   token: "",
@@ -31,27 +34,42 @@ const mutations = {
 };
 
 const actions = {
-  genUserInfo(context: any) {
-    return getUserInfo().then((response: any) => {
-      const { data } = response;
-      const commit = context.commit;
-      if (!data) {
-        throw "验证失败，请重新登录";
+  genUserInfo(context: any, info: {account: string; password: string}) {
+    return new Promise((resolve, reject) => {
+      try {
+        getUserInfo(info).then((response: any) => {
+          const { data } = response;
+          const commit = context.commit;
+          if (!data) {
+            throw "验证失败，请重新登录";
+          }
+          // debugger
+          const { roles, name, avatar } = data;
+          const account = Storage.get("ACCOUNT");
+          // 管理员可不做权限校验
+          if (account !== "admin") {
+            // 权限为空
+            if (!roles || roles.length <= 0) {
+              throw "无权限,请联系管理员添加权限!";
+            }
+          }
+          let newRouters
+          if (rolesToRouters.has(roles)) {
+            newRouters = rolesToRouters.get(roles)
+          } else {
+            newRouters = getRoutersByName(roles);
+            rolesToRouters.set(roles, newRouters)
+          }
+          resetRouterByName(newRouters)
+          commit("SET_ROLES", roles || []);
+          commit("SET_NAME", name);
+          commit("SET_AVATAR", avatar);
+          resolve("")
+        });
+      } catch (err) {
+        reject(err)
       }
-      const { roles, name, avatar } = data;
-      const account = Storage.get("ACCOUNT");
-      // 管理员可不做权限校验
-      if (account !== "admin") {
-        // 权限为空
-        if (!roles || roles.length <= 0) {
-          throw "无权限,请联系管理员添加权限!";
-        }
-      }
-
-      commit("SET_ROLES", roles || []);
-      commit("SET_NAME", name);
-      commit("SET_AVATAR", avatar);
-    });
+    })
   },
   logout(context: any) {
     return new Promise(resolve => {

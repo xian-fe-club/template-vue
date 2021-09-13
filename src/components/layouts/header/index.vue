@@ -64,9 +64,9 @@ export default defineComponent({
     handleMenu(menuData);
     const handleUser = (row: { key: string }) => {
       if (row.key === "exit") {
-        store.dispatch("user/logout").then(() => {
-          router.push("/login");
-          location.reload();
+        store.dispatch("user/logout").then(async () => {
+          await router.push("/login");
+          // location.reload();
         });
       }
     };
