@@ -1,7 +1,10 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
 import Login from "@/pages/auth/login/index.vue";
 
-const routes: Array<RouteRecordRaw> = [
+
+// 方法三： 通过后台传来的 router过滤
+// 如果不需要前端控制路由权限，直接将routes和asyncRoutes写在一起。
+export const constantRoutes: Array<RouteRecordRaw> = [
   {
     path: "/login",
     name: "Login",
@@ -17,14 +20,21 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     // 匹配所有路径  vue2使用*   vue3使用/:pathMatch(.*)*或/:pathMatch(.*)或/:catchAll(.*)
+    // 404页面不能有name。 原因可以自己加上name然后在动态添加的路由页面刷新测试
     path: "/:pathMatch(.*)*",
-    name: "404",
+    // name: '404',
     component: () => import("@/pages/error-page/404.vue")
-  },
+  }
+];
+
+export const asyncRoutes: Array<RouteRecordRaw> = [
   {
     path: "/app",
     name: "app",
     redirect: "/app/test",
+    // meta: {
+    //   roles: ['editor'] // 方法二的权限匹配路由的方式，前端在meta中写死哪些角色拥有这个路由
+    // },
     component: () => import("@/components/layouts/layout/index.vue"),
     children: [
       {
@@ -33,7 +43,8 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
           title: "测试",
           icon: "",
-          isMenu: true
+          isMenu: true,
+          // roles: ['editor']
         },
         redirect: "/app/test/about",
         component: () => import("@/components/layouts/template/index.vue"),
@@ -45,7 +56,7 @@ const routes: Array<RouteRecordRaw> = [
               title: "about",
               icon: "",
               isMenu: true,
-              tag: "test"
+              tag: "test",
             },
             redirect: "/app/test/about/about1",
             component: () => import("@/components/layouts/template/index.vue"),
@@ -131,11 +142,11 @@ const routes: Array<RouteRecordRaw> = [
       }
     ]
   }
-];
+]
 
 const router = createRouter({
   history: createWebHashHistory(process.env.NODE_ENV),
-  routes
+  routes: constantRoutes
 });
 
 export default router;

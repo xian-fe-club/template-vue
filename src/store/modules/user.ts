@@ -7,12 +7,16 @@
  */
 
 import { getUserInfo } from "@/api/user";
+import { resetRouterByName, filierRouters } from "@/router/utils";
+import { removeToken } from "@/utils/auth";
 import Storage from "@/utils/storage";
+import { RouteRecordRaw } from "vue-router";
 
 const state = {
   token: "",
   name: "",
-  avatar: ""
+  avatar: "",
+  routers: []
 };
 
 const mutations = {
@@ -27,37 +31,58 @@ const mutations = {
   },
   SET_ROLES: (state: Record<string, any>, roles: Array<Record<string, any>>) => {
     state.roles = roles;
+  },
+  SET_ROUTERS: (state: Record<string, any>, routers: RouteRecordRaw[]) => {
+    state.routers = routers;
+    Storage.set('routers', routers);
   }
 };
 
 const actions = {
   genUserInfo(context: any) {
-    return getUserInfo().then((response: any) => {
-      const { data } = response;
-      const commit = context.commit;
-      if (!data) {
-        throw "验证失败，请重新登录";
+    return new Promise((resolve, reject) => {
+      try {
+        getUserInfo(state.token).then((response: any) => {
+          const { data } = response;
+          const commit = context.commit;
+          if (!data) {
+            throw "验证失败，请重新登录";
+          }
+          // debugger
+          const { roles, name, avatar } = data;
+          const account = Storage.get("ACCOUNT");
+          // 管理员可不做权限校验
+          if (account !== "admin") {
+            // 权限为空
+            if (!roles || roles.length <= 0) {
+              throw "无权限,请联系管理员添加权限!";
+            }
+          }
+          const newRouters = filierRouters(roles);
+          resetRouterByName(newRouters);
+          commit("SET_ROUTERS", newRouters || []);
+          commit("SET_ROLES", roles || []);
+          commit("SET_NAME", name);
+          commit("SET_AVATAR", avatar);
+          resolve(data)
+        }).catch(error => {
+          reject(error)
+        })
+      } catch (err) {
+        reject(err)
       }
-      const { roles, name, avatar } = data;
-      const account = Storage.get("ACCOUNT");
-      // 管理员可不做权限校验
-      if (account !== "admin") {
-        // 权限为空
-        if (!roles || roles.length <= 0) {
-          throw "无权限,请联系管理员添加权限!";
-        }
-      }
-
-      commit("SET_ROLES", roles || []);
-      commit("SET_NAME", name);
-      commit("SET_AVATAR", avatar);
-    });
+    })
   },
   logout(context: any) {
     return new Promise(resolve => {
-      context.commit("SET_TOKEN", "");
+      // context.commit("SET_TOKEN", "");
       context.commit("SET_ROLES", []);
-      Storage.removeAll(["ACCOUNT", "TOKEN", "USERINFO"]);
+      removeToken()
+      // Storage.removeAll(["ACCOUNT", "TOKEN", "USERINFO"]);
+      Storage.removeAll(["ACCOUNT", "USERINFO"]);
+      const newRouters = filierRouters();
+      resetRouterByName(newRouters);
+      context.commit("SET_ROUTERS", newRouters || []);
       resolve("");
     });
   }

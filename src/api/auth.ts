@@ -12,7 +12,7 @@ const login = (params: Record<string, any>) => {
   return new Promise(resolve => {
     resolve({
       data: {
-        token: "test"
+        token: "test" + params.account
       }
     });
   });
