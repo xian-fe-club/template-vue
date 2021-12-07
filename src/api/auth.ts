@@ -2,13 +2,12 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-02-19 14:05:56
- * @LastEditTime: 2021-02-19 14:06:28
- * @LastEditors: liudehua
+ * @LastEditTime: 2021-12-07 18:51:23
+ * @LastEditors: Please set LastEditors
  */
 
 const login = (params: Record<string, any>) => {
-  console.log(params);
-  // 测试
+  // TODO 开发需注意
   return new Promise(resolve => {
     resolve({
       data: {

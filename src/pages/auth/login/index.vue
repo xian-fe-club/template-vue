@@ -4,7 +4,12 @@
       <a-form>
         <div class="login-title">登录</div>
         <div class="login-line">
-          <a-input placeholder="账号，请使用admin、editor登入" type="text" size="large" v-model:value="info.account">
+          <a-input
+            placeholder="账号，请使用admin、editor登入"
+            type="text"
+            size="large"
+            v-model:value="info.account"
+          >
             <template #prefix><UserOutlined /></template>
           </a-input>
         </div>
@@ -32,9 +37,8 @@ import { defineComponent, reactive } from "vue";
 import { UserOutlined, UnlockOutlined } from "@ant-design/icons-vue";
 import { useRouter } from "vue-router";
 import { login } from "@/api/auth";
-import { setToken } from '@/utils/auth'
+import { setToken } from "@/utils/auth";
 import storage from "@/utils/storage";
-import store from "@/store";
 
 export default defineComponent({
   name: "Login",
@@ -45,16 +49,13 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     const info = reactive({
-      account: "admin",
+      account: "admin", // 默认admin 和 edit账号
       password: ""
     });
     const submit = () => {
       login(info).then(async (res: any) => {
-        setToken(res.data.token)
-        // storage.set("TOKEN", res.data.token);
+        setToken(res.data.token);
         storage.set("ACCOUNT", info.account);
-        // store.commit("user/SET_TOKEN", res.data.token);
-        await store.dispatch("user/genUserInfo")
         router.push("app");
       });
     };
@@ -88,4 +89,3 @@ export default defineComponent({
   }
 }
 </style>
-
