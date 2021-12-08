@@ -56,6 +56,7 @@ export default defineComponent({
       login(info).then(async (res: any) => {
         setToken(res.data.token);
         storage.set("ACCOUNT", info.account);
+        // 权限控制在路由控制,可刷新更新
         router.push("app");
       });
     };

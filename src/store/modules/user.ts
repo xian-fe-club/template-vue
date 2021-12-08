@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-01-04 15:59:03
- * @LastEditTime: 2021-12-07 19:09:38
+ * @LastEditTime: 2021-12-08 11:27:36
  * @LastEditors: Please set LastEditors
  */
 
@@ -43,7 +43,8 @@ const actions = {
             if (!data) {
               throw "验证失败，请重新登录";
             }
-            // debugger
+            // TODO 各个项目自行配置
+            // TODO roles 以后台返回为准, 目前只处理一维数组
             const { roles, name, avatar } = data;
             const account = Storage.get("ACCOUNT");
             // 管理员可不做权限校验;

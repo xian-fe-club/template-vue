@@ -2,7 +2,7 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-02-07 15:29:30
- * @LastEditTime: 2021-12-07 19:29:27
+ * @LastEditTime: 2021-12-08 11:25:07
  * @LastEditors: Please set LastEditors
  */
 import router from "./router";
@@ -12,6 +12,8 @@ import store from "./store";
 
 const whiteList = ["/login", "/auth-redirect"]; // no redirect whitelist
 router.beforeEach(async (to: any, _: any, next: any) => {
+  // 不做权限控制不做路由拦截
+  if (!store.getters.isPermission) next();
   // 跳转登录不做限制
   if (to.path === "/login") {
     next();
