@@ -15,6 +15,7 @@ module.exports = {
     "no-unused-expressions": 0,
     "@typescript-eslint/no-var-requires": 0,
     "no-unused-vars": 0,
+    "vue/script-setup-uses-vars": "off",
     "@typescript-eslint/interface-name-prefix": 0
   },
   overrides: [

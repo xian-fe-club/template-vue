@@ -2,17 +2,19 @@
  * @Description:
  * @Author: liudehua
  * @Date: 2021-01-04 15:59:03
- * @LastEditTime: 2021-03-19 09:53:30
- * @LastEditors: liudehua
+ * @LastEditTime: 2021-12-08 11:27:36
+ * @LastEditors: Please set LastEditors
  */
 
 import { getUserInfo } from "@/api/user";
+import { removeToken } from "@/utils/auth";
 import Storage from "@/utils/storage";
 
 const state = {
   token: "",
   name: "",
-  avatar: ""
+  avatar: "",
+  routers: []
 };
 
 const mutations = {
@@ -32,32 +34,48 @@ const mutations = {
 
 const actions = {
   genUserInfo(context: any) {
-    return getUserInfo().then((response: any) => {
-      const { data } = response;
-      const commit = context.commit;
-      if (!data) {
-        throw "验证失败，请重新登录";
+    return new Promise((resolve, reject) => {
+      try {
+        getUserInfo(state.token)
+          .then((response: any) => {
+            const { data } = response;
+            const commit = context.commit;
+            if (!data) {
+              throw "验证失败，请重新登录";
+            }
+            // TODO 各个项目自行配置
+            // TODO roles 以后台返回为准, 目前只处理一维数组
+            const { roles, name, avatar } = data;
+            const account = Storage.get("ACCOUNT");
+            // 管理员可不做权限校验;
+            if (account !== "admin") {
+              // 权限为空
+              if (!roles || roles.length <= 0) {
+                throw "无权限,请联系管理员添加权限!";
+              }
+            }
+            commit("SET_ROLES", roles || []);
+            commit("SET_NAME", name);
+            commit("SET_AVATAR", avatar);
+            resolve(data);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      } catch (err) {
+        reject(err);
       }
-      const { roles, name, avatar } = data;
-      const account = Storage.get("ACCOUNT");
-      // 管理员可不做权限校验
-      if (account !== "admin") {
-        // 权限为空
-        if (!roles || roles.length <= 0) {
-          throw "无权限,请联系管理员添加权限!";
-        }
-      }
-
-      commit("SET_ROLES", roles || []);
-      commit("SET_NAME", name);
-      commit("SET_AVATAR", avatar);
     });
   },
   logout(context: any) {
     return new Promise(resolve => {
-      context.commit("SET_TOKEN", "");
+      removeToken();
       context.commit("SET_ROLES", []);
-      Storage.removeAll(["ACCOUNT", "TOKEN", "USERINFO"]);
+      Storage.removeAll(["ACCOUNT", "USERINFO"]);
+      const loca = window.location;
+      loca.href = loca.pathname
+        ? loca.origin + loca.pathname + "#/login"
+        : loca.origin + "/#/login";
       resolve("");
     });
   }
