@@ -50,7 +50,7 @@
     "editor.defaultFormatter": "svipas.prettier-plus"
   },
   "[vue]": {
-    "editor.defaultFormatter": "octref.vetur"
+    "editor.defaultFormatter": "Wscats.vue"
   },
   "path-intellisense.mappings": {
     "@": "${workspaceRoot}/src"

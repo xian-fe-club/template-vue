@@ -1,18 +1,9 @@
-/*
- * @Description:
- * @Author: liudehua
- * @Date: 2021-02-07 15:49:43
- * @LastEditTime: 2021-12-08 10:33:19
- * @LastEditors: Please set LastEditors
- */
-
 import { initRoute } from "@/router/util";
-import storage from "@/utils/storage";
-import { asyncRoutes } from "@/router/async";
 
 const state = {
   // 是否需要权限控制
-  isPermission: true,
+  isPermission: false,
+  isAddRouteStatus: false,
   route: {}
 };
 
@@ -23,15 +14,11 @@ const mutations = {
 };
 
 const actions = {
-  generateRoutes(content: any, roles: any) {
+  generateRoutes(content: any) {
     return new Promise<void>(resolve => {
-      let accessedRoutes;
-      const account = storage.get("ACCOUNT");
-      if (account === "admin") {
-        accessedRoutes = initRoute(asyncRoutes);
-      } else {
-        accessedRoutes = initRoute(asyncRoutes, roles);
-      }
+      let accessedRoutes: any = [];
+      accessedRoutes = initRoute();
+      content.state.isAddRouteStatus = true;
       content.commit("SET_ROUTES", accessedRoutes);
       resolve();
     });

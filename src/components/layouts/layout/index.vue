@@ -2,10 +2,10 @@
   <a-layout class="layout">
     <a-layout-header> <Header @changeMenu="changeMenu" /> </a-layout-header>
     <a-layout>
-      <a-layout-sider>
-        <MenuLeft :menulist="leftMenu" />
+      <a-layout-sider width="200px" v-if="menuList && menuList.length">
+        <MenuLeft :menulist="menuList" />
       </a-layout-sider>
-      <a-layout-content>
+      <a-layout-content id="main-layout-content">
         <div class="page-box">
           <Breadcrumb></Breadcrumb>
           <router-view />
@@ -16,25 +16,20 @@
 </template>
 
 <script lang="ts">
-import { reactive, computed } from "vue";
+import { ref } from "vue";
 import MenuLeft from "@/components/layouts/menuLeft/index.vue";
 import Header from "@/components/layouts/header/index.vue";
-import { useRoute } from "vue-router";
 
 export default {
   components: { Header, MenuLeft },
   setup() {
-    const leftMenu: any = reactive([]);
-    const changeMenu = function(menu: any) {
-      leftMenu.splice.apply(leftMenu, [0, leftMenu.length, ...menu]);
+    const menuList: any = ref([]);
+    const changeMenu = (row: any) => {
+      menuList.value = row.children;
     };
-
-    const route = useRoute();
-    const key = computed(() => (route.path !== void 0 ? `${route.path}${new Date()}` : new Date()));
     return {
-      leftMenu,
-      changeMenu,
-      key
+      menuList,
+      changeMenu
     };
   }
 };

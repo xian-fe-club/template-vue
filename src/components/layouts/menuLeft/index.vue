@@ -5,7 +5,6 @@
       v-model:openKeys="openKeys"
       v-model:selectedKeys="selectedKeys"
       mode="inline"
-      theme="dark"
       @click="handleRoute"
     >
       <div v-for="item in menuList" :key="item.name">
@@ -16,11 +15,11 @@
 </template>
 
 <script lang="ts">
-import { reactive, toRefs } from "vue";
+import { defineComponent, ref, reactive, toRefs, watch } from "vue";
 import { useRouter, useRoute, onBeforeRouteUpdate } from "vue-router";
 import MenuTree from "@/components/layouts/menuTree/index.vue";
 
-export default {
+export default defineComponent({
   name: "MenuLeft",
   props: {
     menulist: {
@@ -38,22 +37,17 @@ export default {
     const router = useRouter();
     const route = useRoute();
     // 获取导航菜单
-    const menuList = reactive(props.menulist);
-    console.log(menuList);
-
+    const menuList: any = ref([]);
     // 初始化菜单选中
-    const ininMent = (menuList: any, to?: any) => {
+    const ininMent = (menu: any) => {
+      menuList.value = menu;
       const list: any = [];
       const keys: any = [];
       // 默认选中的菜单name等于当前路由的name
       // 如果存在多级菜单如页面详情页menuName等于需要选中的菜单name即可
-      if (to) {
-        keys.push(to.meta.menuName ? to.meta.menuName : to.name);
-      } else {
-        keys.push(route.meta.menuName ? route.meta.menuName : route.name);
-      }
-      if (menuList.length) {
-        menuList.forEach((item: any) => {
+      keys.push(route.meta.menuName ? route.meta.menuName : route.name);
+      if (menu.length) {
+        menu.forEach((item: any) => {
           // 配置打开的菜单项
           list.push(item.name);
         });
@@ -61,12 +55,20 @@ export default {
       data.openKeys = list;
       data.selectedKeys = keys;
     };
-    ininMent(menuList);
+    ininMent(props.menulist);
     const handleRoute = function(row: any) {
       router.replace({ name: row.key });
     };
-    onBeforeRouteUpdate(to => {
-      ininMent(menuList, to);
+    watch(
+      () => props.menulist,
+      () => {
+        ininMent(props.menulist);
+      }
+    );
+    onBeforeRouteUpdate((to: any) => {
+      const keys: any = [];
+      keys.push(to.meta.menuName ? to.meta.menuName : to.name);
+      data.selectedKeys = keys;
     });
     return {
       menuList,
@@ -74,16 +76,27 @@ export default {
       ...toRefs(data)
     };
   }
-};
+});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
+<style lang="less">
 .menu {
-  .ant-menu-sub.ant-menu-inline .ant-menu-item,
-  .ant-menu-submenu .ant-menu-submenu-title {
-    height: 45px;
-    line-height: 45px;
+  padding-top: 20px;
+
+  .ant-menu-item,
+  .ant-menu-submenu-title {
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .ant-menu-submenu-selected {
+    color: #333;
+  }
+
+  .ant-menu-inline .ant-menu-item {
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 </style>

@@ -14,14 +14,16 @@ export const constantRoutes: Array<RouteRecordRaw> = [
   {
     path: "/401",
     name: "401",
-    component: () => import("@/pages/error-page/401.vue")
+    component: () => import("@/pages/errorPage/401.vue")
   },
+  // 匹配所有路径  vue2使用*   vue3使用/:pathMatch(.*)*或/:pathMatch(.*)或/:catchAll(.*)
+  // 404页面不能有name。 原因可以自己加上name然后在动态添加的路由页面刷新测试
   {
-    // 匹配所有路径  vue2使用*   vue3使用/:pathMatch(.*)*或/:pathMatch(.*)或/:catchAll(.*)
-    // 404页面不能有name。 原因可以自己加上name然后在动态添加的路由页面刷新测试
     path: "/:pathMatch(.*)*",
-    // name: '404',
-    component: () => import("@/pages/error-page/404.vue")
+    meta: {
+      title: "404"
+    },
+    component: () => import("@/pages/errorPage/404.vue")
   }
 ];
 
